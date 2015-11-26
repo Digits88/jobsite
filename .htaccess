@@ -1,0 +1,10 @@
+<FilesMatch "\.ini$">
+Deny from all
+</FilesMatch>
+
+DirectoryIndex index.php index.html
+
+RewriteEngine On
+RewriteRule ^$ index.php
+RewriteRule success.php admin.php?-action=registration_successful [L]
+RewriteRule index.php admin.php?-table=detail&-action=new [L]

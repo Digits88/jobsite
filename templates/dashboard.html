@@ -1,0 +1,42 @@
+{use_macro file="Dataface_Main_Template.html"}
+    {fill_slot name="main_column"}
+        <h1>Welcome to the HGI Job Portal</h1>
+        
+        <p>      <!-- 
+     Print 'Hello Steve' if Steve is logged in,
+     'Hello Helen' if Helen is logged in, or just 
+     'Hello' if nobody is logged in. 
+-->
+<p><!-- Hello {$ENV.username}  --></p>
+</br>
+
+<!-- Print some personal user info -->
+
+            This system allows you to manage the personal and professional information of people who have registered.  Some common actions you may perform with this system
+        include:
+            <ul>
+                <li><img src="{$ENV.DATAFACE_URL}/images/add_icon.gif"/>
+                    <a href="{$ENV.DATAFACE_SITE_HREF}?-table=detail&-action=new">
+                        Create New Record</a>
+                </li>
+                <li><img src="{$ENV.DATAFACE_URL}/images/edit.gif"/> 
+                   Edit existing record: 
+                   <select onchange="window.location.href=this.options[this.selectedIndex].value">
+                    <option value="">Select ...</option>
+                    {foreach from=$detail item=detail}
+                        <option value="{$detail->getURL('-action=edit')}">
+                            {$detail->getTitle()}
+                        </option>
+                    
+                    {/foreach}
+                </select>
+
+                </li>
+                
+                
+            </ul>
+
+      
+</p>
+    {/fill_slot}
+{/use_macro}

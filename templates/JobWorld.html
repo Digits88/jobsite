@@ -1,0 +1,26 @@
+{use_macro file="Dataface_Main_Template.html"}
+    {fill_slot name="html_title"}{"Home Page"|escape}
+    {/fill_slot}
+    {fill_slot name="site_logo"}{include file="HGI_Logo.html"}
+    {/fill_slot}
+{fill_slot name="xf_logo"}    
+{/fill_slot}
+    {fill_slot name="main_column"}
+
+        Home | Job Search | Job Seekers | Listings | Help
+        <!-- 
+     Print 'Hello Steve' if Steve is logged in,
+     'Hello Helen' if Helen is logged in, or just 
+     'Hello' if nobody is logged in. 
+-->
+<br/>Hello, {$ENV.username}
+<br/>
+<br/>
+
+<!-- Print some personal user info -->
+{if $ENV.user}
+    Phone number: {$ENV.user->val('PhoneNumber')}<br/>
+    Email address: {$ENV.user->val('EmailAddress')}<br/>
+{/if}
+    {/fill_slot}
+{/use_macro}
