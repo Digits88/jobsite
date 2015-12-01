@@ -1,0 +1,22 @@
+#xf-logo {
+    background-image: url(images/HGI_logo.png);
+    height: 75px;
+}
+
+#xf-table-actions,
+#xf-table-quicklinks{
+    display: none;
+}
+
+#top-menu-bar {
+    /*
+    border-bottom: 1px solid #8cacbb;
+    background-image: url(images/button-bg.png);
+    background-position: bottom;
+    background-repeat: repeat-x;
+    */
+    border-bottom: none;
+    background-image: none;
+    background-position: bottom;
+    background-repeat: no-repeat;
+}

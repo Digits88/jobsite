@@ -27,6 +27,13 @@ class actions_dashboard {
         //$template_name = $params['action']['template'];
         // The value of the template parameter
 
+        Dataface_Application::getInstance()
+                   ->addHeadContent(
+                       sprintf('<link rel="stylesheet" type="text/css" href="%s"/>',
+                           htmlspecialchars(DATAFACE_SITE_URL.'/dashboard.css')
+                       )
+                   );
+
         df_display(array('detail'=>$details,'malecount'=>$malecount,'femalecount'=>$femalecount, 'prgcount'=>$prgcount,'ntwkcount'=>$ntwkcount,'admincount'=>$admincount), 'dashboard.html');
 
 
