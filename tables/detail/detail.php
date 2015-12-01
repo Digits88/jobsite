@@ -21,11 +21,12 @@ class tables_detail{
 
     function block__before_new_record_form(){
         echo <<<END
-
+    <div class="jumbotron">
 		<h1>HGI Job Database Registration Form</h1>
 		<p>To register in the job database, simply fill in the blanks below.</p>
 		<p></p>
 		<p></p>
+		<div>
 END;
 
     }

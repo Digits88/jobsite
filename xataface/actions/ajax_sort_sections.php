@@ -17,9 +17,9 @@ class dataface_actions_ajax_sort_sections {
 			
 			import('Dataface/PreferencesTool.php');
 			$pt =& Dataface_PreferencesTool::getInstance();
-			
+
 			$prefs =& $pt->getPreferences($record->getId());
-			
+
 			$sectionOrders = array();
 			$lastOrder = 0;
 			foreach ( $sections as $section){

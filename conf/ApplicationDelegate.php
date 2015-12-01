@@ -20,7 +20,30 @@ class conf_ApplicationDelegate {
     if ( $query['-table'] == 'dashboard' and ($query['-action'] == 'browse' or $query['-action'] == 'list') ){
         $query['-action'] = 'dashboard';
     }
-/*
+
+       if(!isAdmin($user)){
+       Dataface_Application::getInstance()
+           ->addHeadContent(
+               sprintf('<link rel="stylesheet" type="text/css" href="%s"/>',
+                   htmlspecialchars(DATAFACE_SITE_URL.'/styles.css')
+               )
+           );
+       Dataface_Application::getInstance()
+                  ->addHeadContent(
+                      sprintf('<link rel="stylesheet" type="text/css" href="%s"/>',
+                          htmlspecialchars(DATAFACE_SITE_URL.'/jobsite.css')
+                      )
+                  );
+       }
+
+       Dataface_Application::getInstance()
+           ->addHeadContent(
+               sprintf('<link rel="stylesheet" type="text/css" href="%s"/>',
+                   htmlspecialchars(DATAFACE_SITE_URL.'/css/bootstrap.css')
+               )
+           );
+
+       /*
     if ( $user and !$user->val('detailid') ){
         // details haven't been updated yet
         if ( !($query['-table'] == 'detail' and $query['-action'] == 'new' )){
@@ -41,6 +64,7 @@ class conf_ApplicationDelegate {
             return array();
 
         } else {
+
             return array(
                 'show_result_stats'=>0,
                 'show_jump_menu'=>0,

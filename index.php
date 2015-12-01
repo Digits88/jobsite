@@ -9,5 +9,3 @@ foreach($_POST as $key=>$value){
 	echo "\n";
     echo $key, ' => ', $value, "<br/>";
 }
-
-?>

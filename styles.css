@@ -1,3 +1,22 @@
 .formHelp {
 	color: #333;
 }
+
+#xf-logo {
+	background-image: url(images/HGI_logo.png);
+    height: 75px;
+}
+
+#left_column,
+#top-search-form,
+#top-section,
+#dataface-sections-left-column,
+h3,
+.xf-button-bar
+{
+    display: none;
+}
+
+div.mainArea{
+    border: 0px solid #bbccff;
+}

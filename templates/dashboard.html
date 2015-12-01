@@ -1,6 +1,6 @@
 {use_macro file="Dataface_Main_Template.html"}
-    {fill_slot name="main_column"}
-        <h1>Welcome to the HGI Job Portal</h1>
+    {fill_slot name="main_section"}
+        <h1>Welcome to the HGI Job Database</h1>
         
         <p>      <!-- 
      Print 'Hello Steve' if Steve is logged in,
@@ -19,24 +19,61 @@
                     <a href="{$ENV.DATAFACE_SITE_HREF}?-table=detail&-action=new">
                         Create New Record</a>
                 </li>
-                <li><img src="{$ENV.DATAFACE_URL}/images/edit.gif"/> 
+                <li>
+
+                    <img src="{$ENV.DATAFACE_URL}/images/edit.gif"/><a href="">Edit</a> existing record:
+                </li>
+                <!--
+                <li><img src="{$ENV.DATAFACE_URL}/images/edit.gif"/>
                    Edit existing record: 
                    <select onchange="window.location.href=this.options[this.selectedIndex].value">
                     <option value="">Select ...</option>
-                    {foreach from=$detail item=detail}
-                        <option value="{$detail->getURL('-action=edit')}">
-                            {$detail->getTitle()}
+                    {foreach from=$detail item=onedetail}
+                        <option value="{$onedetail->getURL('-action=edit')}">
+                            {$onedetail->getTitle()}
                         </option>
                     
                     {/foreach}
                 </select>
 
                 </li>
+                -->
                 
                 
             </ul>
 
       
 </p>
+<div class="row">
+<div class="Registrants col-md-6" >
+    <!-- First Column
+    -->
+    <h1>Registrants</h1>
+    {foreach from=$detail item=onedetail}
+        <br>
+        {$onedetail->getTitle()}
+        <a href="{$onedetail->getURL()}">View record</a>
+
+
+    {/foreach}
+</div>
+    <div class="NumberofRegistrants col-md-6" >
+        <!-- Second Column
+        -->
+        <h1>Number of people</h1>
+        Males  {$malecount}
+        <br>
+        Females  {$femalecount}
+        <br>
+        <h1>Skills</h1><br>
+        Programming = {$prgcount}<br>
+        Networking {$ntwkcount}<br>
+        SysAdmin {$admincount}<br>
+
+
+
+
+    </div>
+</div>
     {/fill_slot}
 {/use_macro}
