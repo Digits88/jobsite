@@ -7,9 +7,11 @@
     height: 75px;
 }
 
-#left_column,
+/*#left_column*/
+#xf-table-quicklinks,
+#xf-table-actions,
 #top-search-form,
-#top-section,
+/*#top-section*/
 #dataface-sections-left-column,
 h3,
 .xf-button-bar

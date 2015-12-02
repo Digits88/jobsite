@@ -84,10 +84,17 @@ class conf_ApplicationDelegate {
     }
 
     function getNavItem($key, $label){
+
+        $query =& Dataface_Application::getInstance()->getQuery();
+
         if (!isAdmin() ){
             switch ($key){
                 case 'help':
-                case 'detail':
+                        return array(
+                                                'href' => DATAFACE_SITE_HREF.'?-action=help',
+                                                'label' => $label,
+                                                'selected' => ($query['-action'] == 'help')
+                                            );
                     // non-admin users can see these
                     throw new Exception("Use default rendering");
             }
@@ -97,7 +104,7 @@ class conf_ApplicationDelegate {
         } else {
 
             //Admin users can see everything..
-            $query =& Dataface_Application::getInstance()->getQuery();
+
             switch ($key){
                 case 'help':
                     // reports is not a table so we need to return custom properties.
