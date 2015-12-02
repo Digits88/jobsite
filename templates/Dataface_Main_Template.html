@@ -121,51 +121,42 @@
 									{if $ENV.prefs.show_search}
 										{block name="before_search"}
 										{define_slot name="search_form"}
-											<div class="search_form" id="top-search-form">
-												<form method="GET" action="{$smarty.server.HOST_URI}{$ENV.DATAFACE_SITE_HREF}">
-													{form_context exclude="-action,-skip,-submit,-mode"}
-													
-													<input class="xf-search-field" type="text" name="-search" value="{$ENV.search|escape}"/>
-													{actions category="find_actions" var="find_actions"}
-													{if $find_actions|@count > 1}
-														<select name="-action">
-														{foreach from=$find_actions item="find_action"}
-															{assign var=option_label value=$find_action.label}
-															{if !$option_label}
-																{assign var=option_label value=$ENV.table_object->getLabel()}
-															{/if}
-															{assign var=option_value value=$find_action.action}
-															{if !$option_value}
-																{assign var=option_value value=$find_action.name}
-															{/if}
-															<option value="{$option_value|escape}">{$option_label|escape}</option>
-														{/foreach}
-														</select>
-													{else}
-														{foreach from=$find_actions item="find_action"}
-															
-															{assign var=option_value value=$find_action.action}
-															{if !$option_value}
-																{assign var=option_value value=$find_action.name}
-															{/if}
-															<input type="hidden" name="-action" value="{$option_value|escape}"/>
-														{/foreach}
-														
-													{/if}
-													<input class="xf-search-button" 
-                                                                                                               type="submit" 
-                                                                                                               name="-submit" 
-                                                                                                               value='{translate id="main.search.button.label" tableObj=$ENV.table_object}Search {$ENV.table_object->getLabel()|escape}{/translate}' 
-                                                                                                               id="search_submit_button" 
-                                                                                                        />
-													<a class="xf-show-advanced-find collapsed">
-														<span class="collapsed">{translate id="templates.G2.advanced_search.label"}Advanced Search{/translate}</span>
-														<span class="expanded">{translate id="templates.G2.hide_advanced_search.label"}Hide Advanced Search{/translate}</span>
-													</a>
-													{block name="after_search_form_submit"}
-												</form>
-											
-											</div>
+							<div class="search_form" style="float: right; white-space: nowrap" id="top-search-form">
+								<form method="GET" action="{$smarty.server.HOST_URI}{$ENV.DATAFACE_SITE_HREF}">
+									<label>{translate id="scripts.GLOBAL.LABEL_SEARCH"}Search{/translate}:</label>
+									<input type="hidden" name="-table" value="detail"/>
+									<input type="text" name="-search" value="{$ENV.search|escape}"/>
+									{actions category="find_actions" var="find_actions"}
+									{if $find_actions|@count > 1}
+									<select name="-action">
+										{foreach from=$find_actions item="find_action"}
+										{assign var=option_label value=$find_action.label}
+										{if !$option_label}
+										{assign var=option_label value=$ENV.table_object->getLabel()}
+										{/if}
+										{assign var=option_value value=$find_action.action}
+										{if !$option_value}
+										{assign var=option_value value=$find_action.name}
+										{/if}
+										<option value="{$option_value}">{$option_label}</option>
+										{/foreach}
+									</select>
+									{else}
+									{foreach from=$find_actions item="find_action"}
+
+									{assign var=option_value value=$find_action.action}
+									{if !$option_value}
+									{assign var=option_value value=$find_action.name}
+									{/if}
+									<input type="hidden" name="-action" value="{$option_value}"/>
+									{/foreach}
+
+									{/if}
+									<input type="submit" name="-submit" value="{translate id="scripts.GLOBAL.LABEL_SUBMIT"}Search{/translate}" id="search_submit_button" />
+									{block name="after_search_form_submit"}
+								</form>
+
+							</div>
 										{/define_slot}
 										{block name="after_search"}
 									

@@ -83,4 +83,40 @@ class conf_ApplicationDelegate {
 
     }
 
+    function getNavItem($key, $label){
+        if (!isAdmin() ){
+            switch ($key){
+                case 'help':
+                case 'detail':
+                    // non-admin users can see these
+                    throw new Exception("Use default rendering");
+            }
+            // Non-admin users can't see any other table.
+            return null;
+
+        } else {
+
+            //Admin users can see everything..
+            $query =& Dataface_Application::getInstance()->getQuery();
+            switch ($key){
+                case 'help':
+                    // reports is not a table so we need to return custom properties.
+                    return array(
+                        'href' => DATAFACE_SITE_HREF.'?-action=help',
+                        'label' => $label,
+                        'selected' => ($query['-action'] == 'help')
+                    );
+
+            }
+
+
+            // For other actions we need to make sure that they aren't selected
+            // if the current action is reports because we want the 'reports'
+            // tab to be selected only in that case.
+            return array(
+                'selected' => ($query['-table'] == $key and $query['-action'] != 'help')
+            );
+        }
+    }
+
 }
